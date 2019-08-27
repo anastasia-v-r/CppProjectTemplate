@@ -1,1 +1,8 @@
+# Visual Studio Nonsense
 .vs
+
+# Conan
+[Cc]onan/
+
+# Cmake
+[Bb]uild/

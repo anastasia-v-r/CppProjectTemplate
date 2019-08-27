@@ -8,7 +8,7 @@ else()
 endif()
 
 # Project Creation
-project (Game)
+project (Program)
 set (CMAKE_CXX_STANDARD 17)
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 
@@ -28,23 +28,21 @@ endif()
 
 # Progam Resource Management
 file(COPY ${PROJECT_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/bin)
-file(COPY ${PROJECT_SOURCE_DIR}/playerData DESTINATION ${CMAKE_BINARY_DIR}/bin)
 
 # .exe, Append all src files to an env. var.
 FILE(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cpp
-                  ${PROJECT_SOURCE_DIR}/src/game/*.cpp
 ) 
-add_executable(Game ${sources}) # Create executable
-set_target_properties(Game PROPERTIES 
+add_executable(${PROJECT_NAME} ${sources}) # Create executable
+set_target_properties(${PROJECT_NAME} PROPERTIES 
 	CXX_STANDARD_REQUIRED ON
 	CXX_EXTENSIONS OFF
 	CXX_STANDARD 17 # Force c++17 standard
 )
 
 # Include Directories
-target_include_directories(Game PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") 
-  target_link_libraries(Game stdc++fs)
+  target_link_libraries(${PROJECT_NAME} stdc++fs)
 endif()
-target_link_libraries(Game ${CONAN_LIBS})
+target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
