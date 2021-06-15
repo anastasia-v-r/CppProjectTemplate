@@ -1,8 +1,14 @@
-# Visual Studio Nonsense
-.vs
+## Cmake
+[Bb]uild/
 
-# Conan
+## Conan
 [Cc]onan/
 
-# Cmake
-[Bb]uild/
+## .vs
+.vs/*
+
+## .vscode
+.vscode/
+
+## Misc.
+!.vs/tasks.vs.json
